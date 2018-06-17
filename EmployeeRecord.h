@@ -61,6 +61,7 @@ public:
     //Print Employee Record to screen
 	void PrintRecord() {
 		std::cout << "Employee ID: " << m_iEmployeeID << std::endl;
+		std::cout << "Employee Name: " << m_sFirstName << " " << m_sLastName << std::endl;
 		std::cout << "Salary: " << m_dSalary << std::endl;
 	};
 };

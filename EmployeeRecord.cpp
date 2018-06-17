@@ -11,7 +11,17 @@
 using namespace std;
 
 void EmployeeRecord::getName(char* fName, char* lName) {
-	//Not sure here?
+	fName = NULL;
+	lName = NULL;
+
+	cout << "First Name:";
+	cin >> m_sFirstName;
+
+	cout << "Last Name:";
+	cin >> m_sLastName;
+
+	fName = &m_sFirstName[0];
+	lName = &m_sLastName[0];
 };
 
 int main() {
@@ -38,7 +48,7 @@ int main() {
     
 	_EmployeeRecord.setID(_ID);
 
-	_EmployeeRecord.getName(first, last);
+	_EmployeeRecord.setName(first, last);
 
 	_EmployeeRecord.setSalary(_salary);
 
