@@ -46,8 +46,20 @@ public:
 		strcpy_s(m_sFirstName, fName);
 		strcpy_s(m_sLastName, lName);
 	};
-	void getName(char* fName, char* lName);
+	void getName(char* fName, char* lName) {
+		fName = NULL;
+		lName = NULL;
+		fName = &m_sFirstName[0];
+		lName = &m_sLastName[0];
+	};
 
+	//Employee Department Number
+	void getDept(int& d) {
+		setDept(d);
+	};
+	void setDept(int d) {
+		m_iDeptID = d;
+	};
 
     //Employee Salary
 	void setSalary(double sal) {
@@ -62,6 +74,7 @@ public:
 	void PrintRecord() {
 		std::cout << "Employee ID: " << m_iEmployeeID << std::endl;
 		std::cout << "Employee Name: " << m_sFirstName << " " << m_sLastName << std::endl;
+		std::cout << "Department Number: " << m_iDeptID << std::endl;
 		std::cout << "Salary: " << m_dSalary << std::endl;
 	};
 };
