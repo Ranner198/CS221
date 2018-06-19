@@ -32,11 +32,12 @@ int main() {
 
 	double _salary = 0.0;
 
-	char first[32] = "", last[32] = "";
+	char _first[32] = "", _last[32] = "";
 
 	int _DeptID = 0;
 	//------------------------------------------
 
+	//Inputs
 
 	//ID Test
 	cout << "Enter Employee ID Number:";
@@ -44,7 +45,7 @@ int main() {
 
 	//Name Test
 	cout << "Enter Name:";
-	cin >> first >> last;
+	cin >> _first >> _last;
 
 	//Dept #
 	cout << "Enter The Department Store Number: ";
@@ -54,29 +55,36 @@ int main() {
 	cout << "Enter Employee Salary Number:";
 	cin >> _salary;
 
+	//------------------------------------------------
+
 	//Class Obj Declaration
 	EmployeeRecord _EmployeeRecord;
     
 	//Set ID #
+	cout << "\nSetting Employee ID: " << _ID << endl;
 	_EmployeeRecord.setID(_ID);
 
 	//Assign Name
-	_EmployeeRecord.getName(first, last);
-	_EmployeeRecord.setName(first, last);
+	cout << "Setting Name: " << _first << " " << _last << endl;
+	_EmployeeRecord.setName(_first, _last);
 
 	//Dept ID 
+	cout << "Setting Department ID Code: " << _DeptID << endl;
 	_EmployeeRecord.setDept(_DeptID);
 
 	//Set Salary
+	cout << "Setting Salary: " << _salary << endl;
 	_EmployeeRecord.setSalary(_salary);
 
 	//Print
-	spacer();
+	cout << "Printing Record..." << endl << endl;
 	_EmployeeRecord.PrintRecord();
-	spacer();
 
 	//Deconstructor
 	_EmployeeRecord.~EmployeeRecord();
+
+	//EmployeeRecord(int ID, char *fName, char *lName, int dept, double sal)
+	EmployeeRecord *test = new EmployeeRecord(1551, "John", "Doe", 56, 10.48);
 
 	system("pause");
     return 0;

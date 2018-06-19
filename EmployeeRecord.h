@@ -6,6 +6,10 @@
 //
 #pragma once
 
+#include <string.h>
+
+using namespace std;
+
 class EmployeeRecord
 {
 private:
@@ -26,7 +30,14 @@ public:
 	};
 
 	//Construtor Function
-	EmployeeRecord(int ID, char *fName, char *lName, int dept, double sal) {
+	EmployeeRecord(int ID, const char* fName, const char* lName, int dept, double sal) {
+		setID(ID);
+		setName(fName, lName);
+		setDept(dept);
+		setSalary(sal);
+
+		//Print
+		PrintRecord();
 	};
 
 	//Default Deconstructor
@@ -42,20 +53,37 @@ public:
 	};
     
 	//Employee Name
-	void setName(char* fName, char* lName) {
-		strcpy_s(m_sFirstName, fName);
-		strcpy_s(m_sLastName, lName);
-	};
-	void getName(char* fName, char* lName) {
+	void setName(const char* fName, const char* lName) {
+		
+		//Get Ptr Size
+		int fSize = strlen(fName);
+		int lSize = strlen(lName);
+
+		//Logical Size Testing
+		if (fSize < 32 && lSize < 32) {
+			strcpy_s(m_sFirstName, fName);
+			strcpy_s(m_sLastName, lName);
+		}
+
+		//Null out
 		fName = NULL;
 		lName = NULL;
+	};
+	void getName(char* fName, char* lName) {
+
+		//Null check
+		fName = NULL;
+		lName = NULL;
+
+		//Assign addresses
 		fName = &m_sFirstName[0];
 		lName = &m_sLastName[0];
 	};
 
 	//Employee Department Number
 	void getDept(int& d) {
-		setDept(d);
+		d = NULL;
+		d = m_iDeptID;
 	};
 	void setDept(int d) {
 		m_iDeptID = d;
@@ -66,15 +94,18 @@ public:
 		m_dSalary = sal;
 	};
 	void getSalary(double* sal) {
-		setSalary(*sal);
+		sal = NULL;
+		sal = &m_dSalary;
 	};
 
     
     //Print Employee Record to screen
 	void PrintRecord() {
-		std::cout << "Employee ID: " << m_iEmployeeID << std::endl;
-		std::cout << "Employee Name: " << m_sFirstName << " " << m_sLastName << std::endl;
-		std::cout << "Department Number: " << m_iDeptID << std::endl;
-		std::cout << "Salary: " << m_dSalary << std::endl;
+		cout << "================================================================" << endl;
+		cout << "Employee ID: " << getID() << endl;
+		cout << "Employee Name: " << m_sFirstName << " " << m_sLastName << endl;
+		cout << "Department Number: " << m_iDeptID << endl;
+		cout << "Salary: " << m_dSalary << endl;
+		cout << "================================================================" << endl;
 	};
 };
