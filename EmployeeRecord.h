@@ -30,7 +30,7 @@ public:
 	};
 
 	//Construtor Function
-	EmployeeRecord(int ID, const char* fName, const char* lName, int dept, double sal) {
+	EmployeeRecord(int ID, char* fName, char* lName, int dept, double sal) {
 		setID(ID);
 		setName(fName, lName);
 		setDept(dept);
@@ -53,7 +53,7 @@ public:
 	};
     
 	//Employee Name
-	void setName(const char* fName, const char* lName) {
+	void setName(char* fName, char* lName) {
 		
 		//Get Ptr Size
 		int fSize = strlen(fName);
