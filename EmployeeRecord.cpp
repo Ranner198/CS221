@@ -12,81 +12,102 @@
 
 using namespace std;
 
-void spacer() {
-	cout << "*******************************************" << endl;
-}
+//Default Constructor
+EmployeeRecord::EmployeeRecord() {
+		m_iEmployeeID = 0;
+		strcpy_s(m_sLastName, "");
+		strcpy_s(m_sFirstName, "");
+		m_iDeptID = 0;
+		m_dSalary = 0.0;
+};
 
-int main() {
-    
-	//Visual Appeal ------------------------------------------------
-	spacer();
-	cout << "Welcome, Please press enter to continue..." << endl;
-	spacer();
-	cin.ignore();
-	system("CLS");
-	spacer();
-	//--------------------------------------------------------------
+//Paramitized Constructor
+EmployeeRecord::EmployeeRecord(int ID, char *fName, char *lName, int dept, double sal) {
+	setID(ID);
+	setName(fName, lName);
+	setDept(dept);
+	setSalary(sal);
+};
 
+//Class Destructor
+EmployeeRecord::~EmployeeRecord() {
+}; 
 
-	//Local Variables for testing---------------
-	int _ID = 0;
+//Set Employee ID
+//Purpose: Set <m_iEmployeeID> variable 
+void EmployeeRecord::setID(int ID) {
+		m_iEmployeeID = ID;
+};
 
-	double _salary = 0.0;
+//Get Employee ID
+//Purpose: Get <m_iEmployeeID> value
+int EmployeeRecord::getID() {
+	return m_iEmployeeID;
+};
 
-	char _first[32] = "", _last[32] = "";
+//Set Name
+//Purpose: Set <m_sLastName && m_sFirstName> variable 
+void EmployeeRecord::setName(char* fName, char* lName) {	
+	//Get Ptr Size
+	int fSize = strlen(fName);
+	int lSize = strlen(lName);
 
-	int _DeptID = 0;
-	//------------------------------------------
+	//Logical Size Testing
+	if (fSize < 32 && lSize < 32) {
+		strcpy_s(m_sFirstName, fName);
+		strcpy_s(m_sLastName, lName);
+	}
 
-	//Inputs
+	//Null out
+	fName = NULL;
+	lName = NULL;
+};
 
-	//ID Test
-	cout << "Enter Employee ID Number:";
-	cin >> _ID;
+//Get Name
+//Purpose: Get <m_sLastName && m_sFirstName> value
+void EmployeeRecord::getName(char* fName, char* lName) {
+	//Null values
+	fName = NULL;
+	lName = NULL;
 
-	//Name Test
-	cout << "Enter Name:";
-	cin >> _first >> _last;
+	//Assign addresses
+	fName = &m_sFirstName[0];
+	lName = &m_sLastName[0];
+};
 
-	//Dept #
-	cout << "Enter The Department Store Number: ";
-	cin >> _DeptID;
+//Set Department
+//Purpose: Set <m_iDeptID> variable 
+void EmployeeRecord::setDept(int d) {
+	m_iDeptID = d;
+};
 
-	//Salary Test
-	cout << "Enter Employee Salary Number:";
-	cin >> _salary;
+//Get Department
+//Purpose: Get <m_iDeptID> value
+void EmployeeRecord::getDept(int& d) {
+	d = NULL;
+	d = m_iDeptID;
+};
 
-	//------------------------------------------------
+//Set Salary 
+//Purpose: Set <m_dSalary> variable 
+void EmployeeRecord::setSalary(double sal) {
+	m_dSalary = sal;
+};
 
-	//Class Obj Declaration
-	EmployeeRecord _EmployeeRecord;
-    
-	//Set ID #
-	cout << "\nSetting Employee ID: " << _ID << endl;
-	_EmployeeRecord.setID(_ID);
+//Get Salary 
+//Purpose: Get <m_dSalary> value
+void EmployeeRecord::getSalary(double* sal) {
+	sal = NULL;
+	sal = &m_dSalary;
+};
 
-	//Assign Name
-	cout << "Setting Name: " << _first << " " << _last << endl;
-	_EmployeeRecord.setName(_first, _last);
-
-	//Dept ID 
-	cout << "Setting Department ID Code: " << _DeptID << endl;
-	_EmployeeRecord.setDept(_DeptID);
-
-	//Set Salary
-	cout << "Setting Salary: " << _salary << endl;
-	_EmployeeRecord.setSalary(_salary);
-
-	//Print
-	cout << "Printing Record..." << endl << endl;
-	_EmployeeRecord.PrintRecord();
-
-	//Deconstructor
-	_EmployeeRecord.~EmployeeRecord();
-
-	//EmployeeRecord(int ID, char *fName, char *lName, int dept, double sal)
-	EmployeeRecord *test = new EmployeeRecord(1551, "John", "Doe", 56, 10.48);
-
-	system("pause");
-    return 0;
-}
+//Print Record
+//Purpose: Print all the employee records
+void EmployeeRecord::PrintRecord() {
+	cout << "================================================================" << endl;
+	cout << "Employee ID: " << getID() << endl;
+	cout << "Employee Name: " << m_sFirstName << " " << m_sLastName << endl;
+	cout << "Department Number: " << m_iDeptID << endl;
+	cout << "Salary: " << m_dSalary << endl;
+	cout << "================================================================" << endl;
+};
