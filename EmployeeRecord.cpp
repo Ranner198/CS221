@@ -1,9 +1,10 @@
-//
-//  EmployeeRecord.cpp
-//  C++Homework
-//
-//  Created by Ran Crump  on 6/15/18.
-//
+/*******************************************************************
+*   EmployeeRecord.cpp
+*   Ran Crump
+*   Prog 1 - Employee Record
+*   
+*   This program is entirely my own work
+*******************************************************************/
 
 #include <stdlib.h>
 #include <iostream>
