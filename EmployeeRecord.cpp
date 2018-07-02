@@ -104,7 +104,7 @@ void EmployeeRecord::getSalary(double* sal) {
 
 //Print Record
 //Purpose: Print all the employee records
-void EmployeeRecord::PrintRecord() {
+void EmployeeRecord::printRecord() {
 	cout << "================================================================" << endl;
 	cout << "Employee ID: " << getID() << endl;
 	cout << "Employee Name: " << m_sFirstName << " " << m_sLastName << endl;
