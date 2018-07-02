@@ -47,5 +47,5 @@ public:
 	void getSalary(double* sal);
 
     //Print Employee Record to screen
-	void PrintRecord();
+	void printRecord();
 };
